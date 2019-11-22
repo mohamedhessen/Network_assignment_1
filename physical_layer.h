@@ -2,7 +2,13 @@
 #define PHYSICAL_LAYER_H
 
 #include "protocol.h"
+
 #include "event_queue.h"
+
+#include <queue>
+
+using namespace std;
+
 
 class Physical_Layer
 {
@@ -29,6 +35,6 @@ class Physical_Layer
 		queue containing received frames
 	*/
 		static queue<frame> received_frames;
-}
+};
 
 #endif

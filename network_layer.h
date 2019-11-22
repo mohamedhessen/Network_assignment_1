@@ -1,0 +1,43 @@
+#ifndef NETOWRK_LAYER_H
+#define NETOWRK_LAYER_H
+
+#include "protocol.h"
+#include "event_queue.h"
+
+char test_case0[] = "C0C1C2C3C4C5C6C7C8";
+char test_case1[] = "S0S1S2S3S4S5S6S7S8";
+
+class Network_Layer
+{
+	public:		
+	
+		/* Fetch a packet from the network layer for transmission on the channel. */
+		static void from_network_layer(simulated_packet *p);
+		
+		/* Deliver information from an inbound frame to the network layer. */
+		static void to_network_layer(packet *p);
+		
+		/*
+			specify which test case to use and the rate at which data is ready
+			and contains a while loop in which it generates network ready events
+		*/
+		static void create_network(int test_case, int data_ready_interval);
+
+		/* Allow the network layer to cause a network layer ready event. */
+		static void enable network layer();
+		
+		/* Forbid the network layer from causing a network layer ready event. */
+		static void disable network layer();
+
+	private:
+		/*
+			if false the network layer will stop to push events into the event queue
+		*/
+		static bool Network_layer_enabled;
+		/*
+			the index of the test case to be used
+		*/
+		static int chosen_test_case;
+}
+
+#endif

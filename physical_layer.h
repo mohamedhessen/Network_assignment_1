@@ -2,6 +2,7 @@
 #define PHYSICAL_LAYER_H
 
 #include "protocol.h"
+#include "event_queue.h"
 
 class Physical_Layer
 {
@@ -9,12 +10,12 @@ class Physical_Layer
 		/*
 			sends data to the other side
 		*/
-		static void to_physical_layer(*frame f, int delay);
+		static void to_physical_layer(frame *f, int delay);
 		
 		/*
 			returns the head of the received frames queue and pops the queue
 		*/
-		static void from_physical_layer(*frame r);
+		static void from_physical_layer(frame *r);
 		
 		/*
 			either creates or connects to a local tcp socket given its port 
